@@ -6,14 +6,18 @@ body {
 }
 
 .jumbotron {
-  background-color: mediumaquamarine; 
+  background-color: #5DCDD2; 
   color: white;
   margin-bottom: 0px;
 }
 
 .jumbotron > .container {
   text-align: center; 
-  padding: 50px 0px;
+  padding: 0px;
+}
+
+.jumbotron h2, .jumbotron h5 {
+  margin: 0px;
 }
 
 .container {
@@ -30,16 +34,4 @@ body {
 
 .large-app {
   padding-left: 40px;
-}
-
-/* 
-For DropdownMenu appearance styles exercise: 
-Define your custom class below.
-*/
-.my-custom-class {
-  /* 
-  font-style: italic;
-  font-weight: 600;
-  font-family: 'Monotype'; 
-  */
 }

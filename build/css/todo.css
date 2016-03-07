@@ -1,0 +1,8 @@
+.todoApp {
+	padding: 20px;
+	border: 5px solid #5DCDD2;
+}
+
+.todoForm input{
+  margin-right: 20px;
+}

@@ -1,18 +1,18 @@
 [
     {
         "checked": "false",
-        "todo": "Attend all-hands meeting"
+        "text": "Attend all-hands meeting"
     },
     {
         "checked": "false",
-        "todo": "Rent a car for Tahoe"
+        "text": "Rent a car for Tahoe"
     },
     {
         "checked": "true",
-        "todo": "Get groceries"
+        "text": "Get groceries"
     },
     {
         "checked": "false",
-        "todo": "Buy birthday cake for Dad"
+        "text": "Buy birthday cake for Dad"
     }
 ]

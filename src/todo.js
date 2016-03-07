@@ -12,6 +12,12 @@ var TodoApp = React.createClass({
       }.bind(this)
     );
   },
+  handleCheck: function(e) {
+    // Make current todo checked/ unchecked
+    // Send updated todo to server
+    // Refetch all todos from server; set TodoApp's state to response
+    console.log('handleCheck', e.target);
+  },
   handleTodoSubmit: function (todo) {
     var todo = { checked: false, todo: todo };
 
@@ -30,7 +36,14 @@ var TodoApp = React.createClass({
       <div className="twitter">
         <h1>To Do List</h1>
         <TodoForm onTodoSubmit={ this.handleTodoSubmit } />
-        <TodoList data={ this.state.data } />
+        <TodoList 
+          handleCheck={ this.handleCheck } 
+          title="To Do" 
+          data={ this.state.data.filter(todo => todo.checked === "false") } />
+        <TodoList 
+          handleCheck={ this.handleCheck } 
+          title="Done" 
+          data={ this.state.data.filter(todo => todo.checked === "true") } />
       </div>
     );
   }
@@ -66,12 +79,15 @@ var TodoForm = React.createClass({
 var TodoList = React.createClass({
   render: function () {
     var todosData = this.props.data;
-    var todoNodes = todosData.map(function (todo) {
-      return <Todo todo={ todo.todo } checked={ todo.checked } />
+    var todoNodes = todosData.map(todo => {
+      return <Todo 
+        todo={ todo } 
+        handleCheck={ this.props.handleCheck } />
     });
 
     return (
       <div className="todoList">
+        <h2>{ this.props.title }</h2>
         { todoNodes }
       </div>
     );
@@ -82,8 +98,12 @@ var Todo = React.createClass({
   render: function () {
     return (
       <div className="tweet">
-        <input type="checkbox" checked={ this.props.checked === "true" ? true : false } />
-        <span>{ this.props.todo }</span>
+        <input 
+          ref={`checkbox-${this.props.todo.text}`}
+          type="checkbox" 
+          checked={ this.props.todo.checked === "true" } 
+          onChange={ this.props.handleCheck } />
+        <span>{ this.props.todo.text }</span>
       </div>
     );
   }

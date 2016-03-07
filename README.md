@@ -1,6 +1,6 @@
-# React Tutorial
+# Node and React Tutorial
 
-There is a simple node server implementation included. It simply serves static files from `public/` and handles requests to `tweets.json` to fetch or add data. 
+There is a simple node server implementation in `server.js`. It serves static files from `public/` and handles requests to `todos.json` to fetch or add data. 
 
 
 ### Dependencies
@@ -15,18 +15,16 @@ node -v
 npm -v
 ```
 
-### To Start Server
+### To Install Dependencies
 
 ```sh
 npm install
+```
+
+To Start Server and Start Compiling Source JSX to Javascript
+
+```sh
 npm start
 ```
 
 Visit <http://localhost:3000/>.
-
-
-### To Compile JSX to Javascript While Developing
-
-```sh
-gulp
-```

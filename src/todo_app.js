@@ -21,7 +21,8 @@ var TodoApp = React.createClass({
     console.log('handleCheck', e.target);
   },
   handleTodoSubmit: function (todo) {
-    var todo = { checked: false, todo: todo };
+    var currentDate = new Date();
+    var todo = { checked: false, text: todo, date: currentDate };
 
     // POST to add todo to database
     $.post(this.props.url, todo, function (todos) {

@@ -1,20 +1,24 @@
 [
     {
+        "id": 4,
         "checked": "false",
         "text": "Attend all-hands meeting",
         "date": "Fri Mar 18 2016 12:30:27 GMT-0700 (PDT)"
     },
     {
+        "id": 3,
         "checked": "false",
         "text": "Rent a car for Tahoe",
         "date": "Sat Mar 12 2016 12:10:27 GMT-0700 (PDT)"
     },
     {
+        "id": 2,
         "checked": "true",
         "text": "Get groceries",
         "date": "Fri Mar 11 2016 12:48:27 GMT-0700 (PDT)"
     },
     {
+        "id": 1,
         "checked": "false",
         "text": "Buy birthday cake for Dad",
         "date": "Fri Mar 11 2016 12:40:27 GMT-0700 (PDT)"

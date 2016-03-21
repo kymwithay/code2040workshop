@@ -15,7 +15,7 @@ var DB               = require('../../../services/db/DB')('fs'),
  */
 var getTaskById = function(id) {
   validateTaskData({id : id});
-  return Q(data).then(DB.lookup('id', id));
+  return DB.lookup('todos', 'id', id);
 };
 
 module.exports = getTaskById;

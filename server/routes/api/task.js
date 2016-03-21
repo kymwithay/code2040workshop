@@ -14,11 +14,11 @@ var createTask  = require('../../controllers/api/task/createTask'),
 // https://osmosy.com/api/v1/task
 router.post('/', allowCors, createTask);
 
-// https://osmosy.com/api/v1/task/123
-router.put('/:id', allowCors, updateTask);
+// https://osmosy.com/api/v1/task/id/123
+router.put('/id/:id', allowCors, updateTask);
 
-// https://osmosy.com/api/v1/task/userId/123
-router.delete('/:id/:id', allowCors, deleteTask);
+// https://osmosy.com/api/v1/task/id/123
+router.delete('/id/:id', allowCors, deleteTask);
 
 // https://osmosy.com/api/v1/task/id/3
 router.get('/id/:id', allowCors, getTaskById);

@@ -12,7 +12,7 @@ var DB = require('../../../services/db/DB')('fs');
  * @returns {Promise}
  */
 var getTasks = function() {
-  return Q(undefined).then(DB.query('todos'));
+  return DB.query('todos', undefined);
 };
 
 module.exports = getTasks;

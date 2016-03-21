@@ -19,7 +19,7 @@ var validateId = validate({id : V.required(prr.isPositiveNumber)});
  * @throws {Error}
  * @returns {Promise}
  */
-var updateTask = function(id, data) {
+var updateTask = R.curry(function(id, data) {
 
   if (R.either(R.isNil, R.compose(R.identical(JSON.stringify({})), JSON.stringify))(data)) {
     return Q(false);
@@ -27,7 +27,8 @@ var updateTask = function(id, data) {
 
   validateId({id : id});
   validateTaskData(data);
-  return Q(data).then(DB.update('todos', 'id', id));
-};
 
-module.exports = R.curry(updateTask);
+  return Q(data).then(DB.update('todos', 'id', id));
+});
+
+module.exports = updateTask;

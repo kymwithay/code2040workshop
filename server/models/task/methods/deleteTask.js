@@ -17,7 +17,7 @@ var DB               = require('../../../services/db/DB')('fs'),
 var deleteTask = function(id) {
   var data = {id : id};
   validateTaskData(data);
-  return Q(data).then(DB.remove('todos'));
+  return DB.remove('todos', 'id', id);
 };
 
 module.exports = deleteTask;

@@ -5,7 +5,7 @@ var R            = require('ramda'),
     fs           = require('fs'),
     promiseUtils = require('alien-node-q-utils');
 
-var toJson            = require('../helpers/toJson'),
+var parseList         = require('../helpers/parseList'),
     decorateForInsert = require('../helpers/decorateForInsert');
 
 var maybeResolveWithList = R.curry(function(deferred, writeData, err) {
@@ -21,7 +21,7 @@ var insert = R.curry(function(collection, item) {
     if (err) {
       deferred.reject(err);
     }
-    writeData = decorateForInsert(toJson(list), item);
+    writeData = decorateForInsert(parseList(list), item);
     fs.writeFile(fileName, writeData, maybeResolveWithList(deferred, writeData));
   });
 

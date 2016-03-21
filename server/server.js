@@ -1,19 +1,21 @@
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
+var fs         = require('fs');
+var path       = require('path');
+var express    = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+var app        = express();
 
 var taskApiRoutes = require('./routes/api/task');
 
 app.set('port', (process.env.PORT || 3000));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended : true
+}));
+
 app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use('/api/v1/task', taskApiRoutes);
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/todos.json', function(req, res) {
   fs.readFile('todos.json', function(err, data) {
@@ -24,9 +26,9 @@ app.get('/todos.json', function(req, res) {
 
 app.post('/todos.json', function(req, res) {
   fs.readFile('todos.json', function(err, data) {
-    var todos = JSON.parse(data);
-    var newId = todos.length + 1;
-    req.body.id = newId; 
+    var todos   = JSON.parse(data);
+    var newId   = todos.length + 1;
+    req.body.id = newId;
     todos.unshift(req.body);
     fs.writeFile('todos.json', JSON.stringify(todos, null, 4), function(err) {
       res.setHeader('Cache-Control', 'no-cache');

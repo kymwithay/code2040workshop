@@ -5,15 +5,19 @@ var R            = require('ramda'),
     fs           = require('fs'),
     promiseUtils = require('alien-node-q-utils');
 
-var toJson = require('../helpers/toJson');
+var parseList = require('../helpers/parseList');
+
+var filterByCriteriaAndSort = function(list, criteria) {
+  // TODO add filter
+  return R.compose(R.sortBy(R.compose(R.prop('id'))), R.clone)(list);
+};
 
 var query = R.curry(function(collection, criteria) {
   var deferred = Q.defer();
 
-  deferred.resolve([]);
-  //fs.readFile(collection + '.json', function(err, list) {
-  //  return promiseUtils.rejectOnErrorOrResolve(deferred, err, R.find(R.propEq(k, v), toJson(list)));
-  //});
+  fs.readFile(collection + '.json', function(err, list) {
+    return promiseUtils.rejectOnErrorOrResolve(deferred, err, filterByCriteriaAndSort(parseList(list), criteria));
+  });
 
   return deferred.promise;
 });

@@ -8,7 +8,7 @@ var notify = require("gulp-notify");
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 
-var entryFile = './src/app.js',
+var entryFile = './client/app.js',
     buildDir = './build/scripts/';
 
 function handleErrors() {

@@ -8,13 +8,19 @@ var R          = require('ramda'),
 
 var _createTask = require('../../../models/task/methods/createTask');
 
+var decorateForModel = function(body) {
+  var _body = R.clone(body);
+  _body.checked = JSON.parse(_body.checked);
+  return _body;
+};
+
 /**
  * Create a new task record
  * @param {Object} req
  * @param {Object} res
  */
 var createTask = function(req, res) {
-  var taskData = R.prop('body', req);
+  var taskData = R.compose(decorateForModel, R.prop('body'))(req);
 
   return Q(taskData)
     .then(_createTask)

@@ -28,6 +28,7 @@ var updateTask = R.curry(function(id, data) {
   validateId({id : id});
   validateTaskData(data);
 
+
   return Q(data).then(DB.update('todos', 'id', id));
 });
 

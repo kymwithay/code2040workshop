@@ -17,8 +17,6 @@ var Task                  = require('../../../models/task/Task'),
 var deleteTask = function(req, res) {
   var taskId = maybeParseIntFromPath(['params', 'id'], req);
 
-  console.log('here..', taskId);
-
   return Q(taskId)
     .then(Task.deleteTask)
     .then(apiUtils.jsonResponseSuccess(req, res))

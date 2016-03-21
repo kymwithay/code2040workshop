@@ -1,8 +1,6 @@
 'use strict';
 
-var R      = require('ramda'),
-    Q      = require('q'),
-    config = require('config');
+var config = require('config');
 
 var DB               = require('../../../services/db/DB')('fs'),
     validateTaskData = require('../helpers/validateTaskData').validateForGetById;

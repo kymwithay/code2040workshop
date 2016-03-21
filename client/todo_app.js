@@ -10,7 +10,8 @@ var TodoApp = React.createClass({
   loadTodosFromServer: function () {
     // GET updated set of todos from database
     $.get(this.props.url, function (todos) {
-        this.setState({ data: todos });
+      console.log(todos.data);
+        this.setState({ data: todos.data });
       }.bind(this)
     );
   },
@@ -18,15 +19,20 @@ var TodoApp = React.createClass({
     // Make current todo checked/ unchecked
     // Send updated todo to server
     // Refetch all todos from server; set TodoApp's state to response
-    console.log('handleCheck', e.target);
+    // PUT to add todo to database
+    // TODO left off here.....
+    $.put(this.props.url + '/id/' + e.target.id, {checked : e.target.checked}, function (todos) {
+        this.setState({ data: todos.data });
+      }.bind(this)
+    );
   },
   handleTodoSubmit: function (todo) {
-    var currentDate = new Date();
-    var todo = { checked: false, text: todo, date: currentDate };
+    var todo = { checked: false, text: todo };
 
     // POST to add todo to database
     $.post(this.props.url, todo, function (todos) {
-        this.setState({ data: todos });
+      console.log('todos = ', todos);
+        this.setState({ data: todos.data });
       }.bind(this)
     );
   },
@@ -41,17 +47,17 @@ var TodoApp = React.createClass({
         <TodoList 
           handleCheck={ this.handleCheck } 
           title="To Do" 
-          data={ this.state.data.filter(todo => todo.checked === "false") } />
+          data={ this.state.data.filter(todo => todo.checked === false) } />
         <TodoList 
           handleCheck={ this.handleCheck } 
           title="Done" 
-          data={ this.state.data.filter(todo => todo.checked === "true") } />
+          data={ this.state.data.filter(todo => todo.checked === true) } />
       </div>
     );
   }
 });
 
 ReactDOM.render(
-  <TodoApp url="todos.json" />,
+  <TodoApp url="/api/v1/task" />,
   document.getElementById('todo')
 );

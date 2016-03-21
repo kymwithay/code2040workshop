@@ -16,18 +16,21 @@ var filterOutObject = R.curry(function(k, v, list) {
   return R.filter(R.compose(R.not, R.identical(v), R.prop(k)), list);
 });
 
-var update = R.curry(function(collection, k, v, item) {
+var update = R.curry(function(collection, k, v, data) {
   var deferred = Q.defer(),
       fileName = collection + '.json',
       writeData;
 
   fs.readFile(fileName, function(err, list) {
+    var item;
+
     if (err) {
       deferred.reject(err);
     }
 
-    item = R.merge(R.objOf(k, v), item);
-    list = R.compose(R.prepend(item), filterOutObject(k, v), parseList)(list);
+    list = parseList(list);
+    item = R.compose(R.merge(R.__, data), R.find(R.propEq(k, v)))(list);
+    list = R.compose(R.prepend(item), filterOutObject(k, v))(list);
 
     writeData = decorateForInsert(list, item);
     fs.writeFile(fileName, writeData, maybeResolveWithList(deferred, writeData));

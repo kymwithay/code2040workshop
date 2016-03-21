@@ -25,11 +25,9 @@ var remove = R.curry(function(collection, k, v) {
       deferred.reject(err);
     }
 
-    console.log('k = ', k);
-    console.log('v = ', v);
-    list = R.compose(filterOutObject(k, v), parseList)(list);
+    writeData = R.compose(JSON.stringify, filterOutObject(k, v), parseList)(list);
 
-    fs.writeFile(fileName, list, maybeResolveWithList(deferred, writeData));
+    fs.writeFile(fileName, writeData, maybeResolveWithList(deferred, writeData));
   });
 
   return deferred.promise;

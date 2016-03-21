@@ -6,7 +6,7 @@ var R        = require('ramda'),
     validate = require('../../../utils/validatePayload')('taskData');
 
 var validateForInsert = validate({
-  title   : V.required(R.both(prr.isStringOfLengthAtLeast(3), prr.isStringOfLengthAtMost(100))),
+  text    : V.required(R.both(prr.isStringOfLengthAtLeast(3), prr.isStringOfLengthAtMost(100))),
   checked : V.required(R.is(Boolean))
 });
 
@@ -15,7 +15,7 @@ var validateForGetById = validate({
 });
 
 var validateForUpdate = validate({
-  title   : R.both(prr.isStringOfLengthAtLeast(3), prr.isStringOfLengthAtMost(30)),
+  text    : R.both(prr.isStringOfLengthAtLeast(3), prr.isStringOfLengthAtMost(100)),
   checked : R.is(Boolean)
 });
 

@@ -1,7 +1,6 @@
 'use strict';
 
-var R      = require('ramda'),
-    Q      = require('q'),
+var Q      = require('q'),
     config = require('config');
 
 var DB               = require('../../../services/db/DB')('fs'),

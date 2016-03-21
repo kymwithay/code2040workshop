@@ -4,9 +4,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+var taskApiRoutes = require('./routes/api/task');
+
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(path.join(__dirname, 'build')));
+app.use('/', express.static(path.join(__dirname, '../build')));
+
+app.use('/api/v1/task', taskApiRoutes);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

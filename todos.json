@@ -1,26 +1,26 @@
 [
     {
         "id": 4,
-        "checked": "false",
+        "checked": false,
         "text": "Attend all-hands meeting",
-        "date": "Fri Mar 18 2016 12:30:27 GMT-0700 (PDT)"
+        "date": "2016-03-18T09:26:19+00:00"
     },
     {
         "id": 3,
-        "checked": "false",
+        "checked": false,
         "text": "Rent a car for Tahoe",
-        "date": "Sat Mar 12 2016 12:10:27 GMT-0700 (PDT)"
+        "date": "2016-03-16T17:26:00+00:00"
     },
     {
         "id": 2,
-        "checked": "true",
+        "checked": true,
         "text": "Get groceries",
-        "date": "Fri Mar 11 2016 12:48:27 GMT-0700 (PDT)"
+        "date": "2016-03-13T20:26:12+00:00"
     },
     {
         "id": 1,
-        "checked": "false",
+        "checked": false,
         "text": "Buy birthday cake for Dad",
-        "date": "Fri Mar 11 2016 12:40:27 GMT-0700 (PDT)"
+        "date": "2016-03-12T21:26:33+00:00"
     }
 ]

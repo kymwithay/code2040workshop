@@ -2,7 +2,7 @@
     {
         "id": 1,
         "date": "2016-01-12T21:26:33+00:00",
-        "checked": true,
+        "checked": false,
         "text": "Buy birthday cake for Dad"
     },
     {
@@ -14,7 +14,7 @@
     {
         "id": 3,
         "date": "2016-03-21T05:22:19+00:00",
-        "checked": true,
+        "checked": false,
         "text": "Vacuum room"
     }
 ]

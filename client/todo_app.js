@@ -20,9 +20,15 @@ var TodoApp = React.createClass({
       url: this.props.url + '/id/' + todo.id, 
       type: 'PUT', 
       data: {checked: !todo.checked}, 
-      success: function (todos) {
-        console.log(todos);
-        this.setState({ data: todos.data });
+      success: function (response) {
+        var updatedTodo = response.data;
+
+        var clonedTodosData = JSON.parse(JSON.stringify(this.state.data));
+        var newTodosData = clonedTodosData.filter(function(todo) {
+          return todo.id !== response.data.id;
+        }).concat(updatedTodo);
+
+        this.setState({ data: newTodosData });
       }.bind(this)
     });
   },

@@ -30,7 +30,7 @@ var update = R.curry(function(collection, k, v, data) {
 
     list = parseList(list);
     item = R.compose(R.merge(R.__, data), R.find(R.propEq(k, v)))(list);
-    list = R.compose(R.prepend(item), filterOutObject(k, v))(list);
+    list = filterOutObject(k, v, list);
 
     writeData = decorateForInsert(list, item);
     fs.writeFile(fileName, writeData, maybeResolveWithList(deferred, writeData));

@@ -3,21 +3,19 @@
 var R            = require('ramda'),
     Q            = require('q'),
     fs           = require('fs'),
-    promiseUtils = require('alien-node-q-utils');
+    config       = require('config'),
+    promiseUtils = require('alien-node-q-utils'),
+    execsql      = require('execsql');
 
-var parseList = require('../helpers/parseList');
+var commonMocks = require('../commonMocks');
 
 var maybeResolveWithList = R.curry(function(deferred, writeData, err) {
   return promiseUtils.rejectOnErrorOrResolve(deferred, err, JSON.parse(writeData));
 });
 
-var filterOutObject = R.curry(function(k, v, list) {
-  return R.filter(R.compose(R.not, R.identical(v), R.prop(k)), list);
-});
-
-var remove = R.curry(function(collection, k, v) {
+var resetDb = function(db) {
   var deferred = Q.defer(),
-      fileName = collection + '.json',
+      fileName = db + 'Mock.json',
       writeData;
 
   fs.readFile(fileName, function(err, list) {
@@ -25,12 +23,10 @@ var remove = R.curry(function(collection, k, v) {
       deferred.reject(err);
     }
 
-    writeData = R.compose(R.partialRight(JSON.stringify, [null, 4]), filterOutObject(k, v), parseList)(list);
-
     fs.writeFile(fileName, writeData, maybeResolveWithList(deferred, writeData));
   });
 
   return deferred.promise;
-});
+};
 
-module.exports = remove;
+module.exports = resetDb;

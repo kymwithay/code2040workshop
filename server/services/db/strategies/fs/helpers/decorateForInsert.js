@@ -6,7 +6,7 @@ var makeTimestamp = require('./makeTimestamp');
 
 var decorateForInsert = function(data, item) {
   return R.compose(
-    JSON.stringify,
+    R.partialRight(JSON.stringify, [null, 4]),
     R.prepend(R.__, data),
     R.merge({
       id   : R.compose(R.inc, R.length)(data),

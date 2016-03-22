@@ -9,8 +9,9 @@ var Todo = React.createClass({
           type="checkbox" 
           checked={ this.props.todo.checked } 
           onChange={ (e) => { this.props.handleCheck(this.props.todo) } } />
-        <span>{ this.props.todo.text }</span>
-        <div style={{marginLeft: 10, fontSize: 10, fontStyle: 'italic'}}>- Added { this.props.todo.date }</div>
+        <span style={ { fontSize: 18, textDecoration: 'underline' } }>
+          { this.props.todo.text }
+        </span>
       </div>
     );
   }

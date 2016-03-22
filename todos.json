@@ -1,20 +1,20 @@
 [
     {
-        "id": 3,
-        "checked": false,
-        "text": "Vacuum room",
-        "date": "2016-03-21T05:22:19+00:00"
+        "id": 1,
+        "date": "2016-01-12T21:26:33+00:00",
+        "checked": true,
+        "text": "Buy birthday cake for Dad"
     },
     {
         "id": 2,
+        "date": "2016-02-14T03:26:19+00:00",
         "checked": false,
-        "text": "Attend all-hands meeting",
-        "date": "2016-02-14T03:26:19+00:00"
+        "text": "Attend all-hands meeting"
     },
     {
-        "id": 1,
-        "checked": false,
-        "text": "Buy birthday cake for Dad",
-        "date": "2016-01-12T21:26:33+00:00"
+        "id": 3,
+        "date": "2016-03-21T05:22:19+00:00",
+        "checked": true,
+        "text": "Vacuum room"
     }
 ]

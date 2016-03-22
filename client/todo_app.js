@@ -72,10 +72,6 @@ var TodoApp = React.createClass({
           handleCheck={ this.checkTodo } 
           title="To Do" 
           data={ this.state.data.filter(function(todo) { return !todo.checked }) } />
-        <TodoList 
-          handleCheck={ this.unCheckTodo } 
-          title="Done" 
-          data={ this.state.data.filter(function(todo) { return todo.checked }) } />
       </div>
     );
   }

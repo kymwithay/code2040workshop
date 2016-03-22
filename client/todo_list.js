@@ -6,6 +6,7 @@ var TodoList = React.createClass({
     var todosData = this.props.data;
     var todoNodes = todosData.map(todo => {
       return <Todo 
+        key={ todo.id }
         todo={ todo } 
         handleCheck={ this.props.handleCheck } />
     });

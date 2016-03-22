@@ -10,21 +10,21 @@ var TodoApp = React.createClass({
   loadTodosFromServer: function () {
     // GET updated set of todos from database
     $.get(this.props.url, function (todos) {
-      console.log(todos.data);
         this.setState({ data: todos.data });
       }.bind(this)
     );
   },
-  handleCheck: function(e) {
+  handleCheck: function(todo) {
     // Make current todo checked/ unchecked
-    // Send updated todo to server
-    // Refetch all todos from server; set TodoApp's state to response
-    // PUT to add todo to database
-    // TODO left off here.....
-    $.put(this.props.url + '/id/' + e.target.id, {checked : e.target.checked}, function (todos) {
+    $.ajax({
+      url: this.props.url + '/id/' + todo.id, 
+      type: 'PUT', 
+      data: {checked: !todo.checked}, 
+      success: function (todos) {
+        console.log(todos);
         this.setState({ data: todos.data });
       }.bind(this)
-    );
+    });
   },
   handleTodoSubmit: function (todo) {
     var todo = { checked: false, text: todo };

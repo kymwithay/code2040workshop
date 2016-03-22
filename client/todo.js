@@ -7,8 +7,8 @@ var Todo = React.createClass({
         <input 
           ref={`checkbox-${this.props.todo.text}`}
           type="checkbox" 
-          checked={ this.props.todo.checked === "true" } 
-          onChange={ this.props.handleCheck } />
+          checked={ this.props.todo.checked } 
+          onChange={ (e) => { this.props.handleCheck(this.props.todo) } } />
         <span>{ this.props.todo.text }</span>
         <div style={{marginLeft: 10, fontSize: 10, fontStyle: 'italic'}}>- Added { this.props.todo.date }</div>
       </div>

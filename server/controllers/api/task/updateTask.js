@@ -11,7 +11,9 @@ var maybeParseIntFromPath = require('../../_helpers/maybeParseIntFromPath'),
 
 var decorateForModel = function(body) {
   var _body = R.clone(body);
-  _body.checked = JSON.parse(_body.checked);
+  if (R.prop('checked')(_body)) {
+    _body.checked = JSON.parse(_body.checked);
+  }
   return _body;
 };
 

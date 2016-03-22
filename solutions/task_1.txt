@@ -1,0 +1,11 @@
+App needs to "update" items to indicate when they are done.
+
+Things we need:
+  - updateTask controller
+  - updateTask method in the Task model
+  - PUT route
+
+
+To catch up and implement all these tasks, simply checkout the node-finished branch
+
+git checkout node-finished

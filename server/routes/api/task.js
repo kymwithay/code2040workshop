@@ -6,16 +6,12 @@ var express = require('express'),
 var allowCors = require('../../middleware/allowCors');
 
 var createTask  = require('../../controllers/api/task/createTask'),
-    updateTask  = require('../../controllers/api/task/updateTask'),
     getTasks    = require('../../controllers/api/task/getTasks'),
     getTaskById = require('../../controllers/api/task/getTaskById'),
     deleteTask  = require('../../controllers/api/task/deleteTask');
 
 // https://osmosy.com/api/v1/task
 router.post('/', allowCors, createTask);
-
-// https://osmosy.com/api/v1/task/id/123
-router.put('/id/:id', allowCors, updateTask);
 
 // https://osmosy.com/api/v1/task/id/123
 router.delete('/id/:id', allowCors, deleteTask);

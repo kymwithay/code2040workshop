@@ -25,7 +25,7 @@ var TodoApp = React.createClass({
 
         var clonedTodosData = JSON.parse(JSON.stringify(this.state.data));
         var newTodosData = clonedTodosData.filter(function(todo) {
-          return todo.id !== response.data.id;
+          return todo.id !== updatedTodo.id;
         }).concat(updatedTodo);
 
         this.setState({ data: newTodosData });
